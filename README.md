@@ -135,7 +135,13 @@ The loss and accuracy plot for both the CNN and Transformer models are as follow
 
 ## Conclusion
 
-As can be inferred from classification results, DeIT outperforms VGG19 in terms of accuracy and F1-Score. Using the pre-trained `imagenet1k` weights, DeIT gave us the pretty good accuracy of 0.91 which is better than VGG19's 0.86, and it other metrics as well. This suggests that transformers are able to outperform CNN models in image classification tasks, which are basically the state-of-the-art in image classification at the moment.
+Now we will compare the models. Note that the `DenseNet201` model (which is a type of CNN) was also trained, and you can see the results in the code.
+
+Based on the Classification Report, it can be concluded that both models are classifying with good accuracy. The accuracy of the CNN model was about 86%, and the accuracy of the Transformer model was about 91%, indicating that the Transformer model, despite having fewer trainable parameters (though it had many more parameters overall), has better accuracy and performance. This hypothesis can also be confirmed by examining the F1 and Recall scores. By examining the confusion matrixes, it can be seen that the transformer model, except for the bird and cat classes (which were confused with deer and dog, respectively) and the truck class (which was somewhat confused with automobile), has very good accuracy for the other classes and can almost completely identify them. The CNN model also had issues in these areas, but overall, it performed poorly in classifying birds and misidentified some other images. The accuracy and loss charts and other parameters also show the superiority of the transformer model, although the CNN model also has acceptable accuracy.
+
+The transformer model, although it has better accuracy, took much more time (about 7 times more) for each training session and was also much heavier, consuming more memory and GPU resources (although different libraries were used, and the system conditions were not entirely identical, so the results are not precisely comparable, but a general view of the ratio and comparison of the two can be obtained). The test time for both was somewhat close (although the transformer's was longer, which is logical given the fourfold number of parameters), and probably the time differences would be greater if we were to repeat the experiment.
+
+An important point in comparing the performance of these two models is that the CNN model has a bit of overfitting, although transformer models are generally more vulnerable to this issue. However, as mentioned, due to system limitations, it was not possible to train the model further, but if continued, the model would probably overfit a bit. As a solution, we could have used methods like regularization, which was not used here to keep the conditions identical, although early stopping was used for the CNN model to prevent severe overfitting.
 
 ## Contributors
 
